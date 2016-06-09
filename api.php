@@ -59,10 +59,14 @@ function getFunctions($action){
             break;
     }
 }
-
-if (!validAuthKey($_GET['authkey'])) {
-    die("Invalid auth key");
+if(isset($_GET['authkey'])){
+    if (!validAuthKey($_GET['authkey'])) {
+        die("Invalid auth key!");
+    }
+} else {
+    die("Missing auth key!");
 }
+
 
 if (isset($_GET['action'])) {
     getFunctions($_GET['action']);
